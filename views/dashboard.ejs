@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/stylesheets/dashboard.css" />
+
+  <!-- MD Bootstrap css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="/stylesheets/modal.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
+    <a class="navbar-brand" href="/admin/dashboard">ADMIN DASHBOARD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+            <a class="nav-link" href="#">AllUsers <span class="sr-only">(current)</span></a>
+          </li> -->
+        <li class="nav-item">
+          <a class="nav-link active" data-target="#exampleModal" data-toggle="modal" href="">Create</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Select Users
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Update</a>
+            <a class="dropdown-item" href="#">Delete</a>
+            <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Add</a> -->
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Delete</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="/admin/search" method="post">
+        <input name="search_query" class="form-control mr-sm-2 box-shadow bg-light text-info" type="search"
+          placeholder="Search " aria-label="Search">
+      </form>
+      <form action="/admin/logout" method="get">
+        <button type="submit" class="btn btn-primary">Log out
+        </button>
+
+
+      </form>
+    </div>
+  </nav>
+
+  <div class="cr d-flex justify-content-between">
+
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form action="/admin/dashboard" method="post">
+        <div class="modal-content p-4">
+          <button type="button" class="close x" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-header border-0 mb-2">
+            <h5 class="modal-title" id="exampleModalLabel">Hello Admin</h5>
+            <button type="button" class="close" aria-label="Close" disabled="true">
+              <!-- <span aria-hidden="true">Log in</span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3 class="mb-4 title">New<br />Users</h3>
+            <div class="form-group">
+              <input type="text" id="name" name="name" class="form-control p-0" required
+                style="box-shadow: none; border-radius: 0px" />
+              <label class="form-control-placeholder p-0" for="name lbl">Full Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="email" name="email" class="form-control p-0" required
+                style="box-shadow: none; border-radius: 0px" />
+              <label class="form-control-placeholder p-0" for="name">Email</label>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control p-0" required
+                style="box-shadow: none; border-radius: 0px" />
+              <label class="form-control-placeholder p-0" for="password">Password</label>
+            </div>
+
+            <!-- <label class="tc"
+                >By signing up I accept the
+                <strong>Terms & Conditions</strong> of Daily</label -->
+
+          </div>
+          <div class="modal-footer border-0 mb-4">
+            <input type="submit" class="btn signup col-6 col-md-6">
+
+
+
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <section class="our-webcoderskull padding-lg">
+    <div class="container">
+      <div class="row heading heading-icon">
+        <div class="cr d-flex justify-content-center">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Create a New User
+          </button>
+        </div>
+        <h2> Our Clients</h2>>
+      </div>
+      <ul class="row">
+        <% AllUsers.forEach((user)=>{%>
+
+          <li class="col-12 col-md-6 col-lg-3">
+            <div class="cnt-block equal-hight" style="height: 349px">
+              <figure>
+                <img src="http://www.webcoderskull.com/img/team1.png" class="img-responsive" alt="" />
+              </figure>
+              <h3><a href="#">
+                  <%= user.name %>
+                </a></h3>
+              <p>
+                <%= user.email %>
+              </p>
+              <ul class="follow-us clearfix">
+                <li>
+                  <a href="#" type="button" data-toggle="modal" data-target="#editModal"><i
+                      class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                  <a id="delete-user" href="http://localhost:5005/admin/params/<%= user._id %> "><i
+                      class="fa-solid fa-trash-can" aria-hidden="true"></i></a>
+                </li>
+                <!-- <li>
+                  <a href="#"
+                    ><i class="fa fa-linkedin" aria-hidden="true"></i
+                  ></a>
+                </li> -->
+              </ul>
+            </div>
+          </li>
+          <!-- Edit modal -->
+
+
+
+          <div>
+            <form action="/admin/update" method="post">
+
+
+              <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+
+                  <div class="modal-content p-4">
+                    <button type="button" class="close x" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <div class="modal-body">
+
+                      <div class="form-group">
+                        <input type="text" id="name" name="name" class="form-control p-0" value=<%=user.name %>
+                        style="box-shadow: none; border-radius: 0px"
+                        />
+                        <label class="form-control-placeholder p-0" for="name lbl">Full Name</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="email" name="email" class="form-control p-0" value=<%=user.email %>
+                        style="box-shadow: none; border-radius: 0px"
+                        />
+                        <label class="form-control-placeholder p-0" for="name">Email</label>
+                      </div>
+
+                      <input style="display: none;" type="text" value="<%= user._id %>" name="userId">
+
+
+                    </div>
+                    <div class="modal-footer border-0 mb-4">
+                      <input value="Update User" type="submit" class="btn signup col-6 col-md-6">
+                      </input>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+
+          <!-- Edit modal ends -->
+
+
+
+          <% }) %>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- md bootstrap js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
